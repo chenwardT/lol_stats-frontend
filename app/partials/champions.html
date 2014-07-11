@@ -1,0 +1,14 @@
+<div>
+  <h3>Champions</h3>
+  <table>
+    <thead>
+    <td>#</td><td>ID</td><td>Name</td>
+    </thead>
+    <tbody>
+    <tr ng-repeat="champion in championList">
+      <td>{{$index + 1}}</td>
+      <td>{{champion.champion_id}}</td>
+      <td>{{champion.name}}</td>
+    </tbody>
+  </table>
+</div>

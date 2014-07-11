@@ -1,0 +1,21 @@
+<div>
+  Summoner Details
+  <ul>
+    <li>Name: {{summoner.name}}</li>
+    <li>ID: {{summoner.summoner_id}}</li>
+    <li>Level: {{summoner.summoner_level}}</li>
+    <li>Region: {{summoner.region}}</li>
+  </ul>
+
+  <div ng-controller="MatchHistoryCtrl">
+    <ul>
+      <li ng-repeat="game in games.results">
+        <ul>
+          <li ng-repeat="(k, v) in game">
+            {{k}}: {{v}}
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
