@@ -23,18 +23,18 @@ lolApp.factory('championService', function($http) {
   return championAPI;
 });
 
-lolApp.factory('SummonerService', ['$resource', function($resource) {
+lolApp.factory('summonerService', ['$resource', function($resource) {
   return $resource('http://127.0.0.1:8001/api/summoners/:region/:name',
     {region: '@region', name: '@name'}
   );
 }]);
 
-lolApp.factory('MatchHistoryService', ['$resource', function($resource) {
+lolApp.factory('matchHistoryService', ['$resource', function($resource) {
   return $resource('http://127.0.0.1:8001/api/games/:region/:name',
     {region: '@region', name: '@name'}
   );
 }]);
 
-lolApp.factory('SummonerUpdateService', ['$resource', function($resource) {
+lolApp.factory('summonerUpdateService', ['$resource', function($resource) {
   return $resource('')
 }])

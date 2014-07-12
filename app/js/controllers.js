@@ -22,24 +22,41 @@ lolApp.controller('ChampionCtrl', ['$scope', 'championService', function($scope,
   })
 }]);
 
-lolApp.controller('SummonerListCtrl', ['$scope', 'SummonerService', function($scope, SummonerService) {
-  $scope.summoners = SummonerService.get({region: 'euw'});
+lolApp.controller('SummonerListCtrl', ['$scope', 'summonerService', function($scope, summonerService) {
+  $scope.summoners = summonerService.get({region: 'euw'});
   $scope.orderProp = 'name';
 }]);
 
-lolApp.controller('SummonerDetailCtrl', ['$scope', '$routeParams', 'SummonerService',
-  function($scope, $routeParams, SummonerService) {
-    $scope.summoner = SummonerService.get({region: $routeParams.region, name: $routeParams.name});
+lolApp.controller('SummonerDetailCtrl', ['$scope', '$routeParams', 'summonerService',
+  function($scope, $routeParams, summonerService) {
+    $scope.summoner = summonerService.get({region: $routeParams.region, name: $routeParams.name});
 }]);
 
-lolApp.controller('SummonerLookupCtrl', ['$scope',
-  function($scope) {
-    return;
+lolApp.controller('SummonerLookupCtrl', ['$scope', '$timeout', 'summonerService',
+  function($scope, $timeout, summonerService) {
+    var timeout;
+
+    $scope.$watch('name', function(newName) {
+      if (newName) {
+        // If there is a timeout already in progress
+        if (timeout) $timeout.cancel(timeout);
+
+        timeout = $timeout(function() {
+          $scope.summonerInfo = summonerService.get({region: $scope.region, name: newName})
+        }, 350);
+      }
+    });
+
+//    $scope.$watch('name', function(newName) {
+//      $scope.summonerInfo = summonerService.get({region: $scope.region, name: newName});
+//    });
+
+//    $scope.summonerInfo = summonerService.get({region: 'na', name: 'ronfar'});
 }]);
 
-lolApp.controller('MatchHistoryCtrl', ['$scope', '$routeParams', 'MatchHistoryService',
-  function($scope, $routeParams, MatchHistoryService) {
-    $scope.games = MatchHistoryService.get({region: $routeParams.region, name: $routeParams.name});
+lolApp.controller('MatchHistoryCtrl', ['$scope', '$routeParams', 'matchHistoryService',
+  function($scope, $routeParams, matchHistoryService) {
+    $scope.games = matchHistoryService.get({region: $routeParams.region, name: $routeParams.name});
 }]);
 
 lolApp.controller('ItemCtrl', ['$scope',

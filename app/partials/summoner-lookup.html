@@ -1,6 +1,29 @@
 <div>
   <h3>Summoner Search</h3>
 
-  <p>Region: <input></p>
-  <p>Name: <input></p>
+  <label for="region">
+    Region
+  </label>
+  <select ng-model="region">
+    <option>NA</option>
+    <option>EUW</option>
+    <option>EUNE</option>
+    <option>BR</option>
+    <option>LAN</option>
+    <option>LAS</option>
+    <option>KR</option>
+    <option>OCE</option>
+    <option>RU</option>
+    <option>TR</option>
+  </select>
+
+  <label for="name">
+    Name
+  </label>
+  <input type="text"
+         ng-model="name" />
+
+  <ul>
+    <li ng-repeat="(k, v) in summonerInfo">{{k}}: {{v}}</li>
+  </ul>
 </div>
