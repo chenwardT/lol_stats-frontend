@@ -12,6 +12,9 @@ var lolApp = angular.module('lolApp.controllers', []);
 //
 //  }]);
 
+lolApp.controller('HomeCtrl', ['$scope', function($scope) {
+
+}]);
 
 lolApp.controller('ChampionCtrl', ['$scope', 'championService', function($scope, championService) {
   $scope.nameFilter = null;
