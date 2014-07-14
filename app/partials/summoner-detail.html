@@ -1,6 +1,10 @@
 <div>
-  Summoner Details
-  <button type="button" class="btn btn-default" ng-click="updateSummonerFromURL()">Updata Data</button>
+  <h3>Summoner Details</h3>
+  <button type="button" class="btn btn-default" ng-click="updateSummonerFromURL()">Update Data</button>
+  <div ng-show="loading">
+    taskID: {{taskID}}
+    <div us-spinner></div>
+  </div>
   <ul>
     <li>Name: {{summoner.name}}</li>
     <li>ID: {{summoner.summoner_id}}</li>

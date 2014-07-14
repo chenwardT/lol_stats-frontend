@@ -5,6 +5,7 @@
 var lolApp = angular.module('lolApp', [
   'ngRoute',
   'ngResource',
+  'angularSpinner',
   'lolApp.filters',
   'lolApp.services',
   'lolApp.directives',
@@ -26,4 +27,7 @@ config(['$routeProvider', '$resourceProvider', '$httpProvider',
 
       // This header must be sent for AJAX calls for Django's is_ajax() to recognize them.
       $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+      // Django, by default, doesn't like JSON, so change content-type to what it likes
+      //$httpProvider.defaults.headers.post = {'content-type': 'application/x-www-form-urlencoded'};
 }]);

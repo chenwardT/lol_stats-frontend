@@ -33,24 +33,95 @@ lolApp.controller('SummonerListCtrl', ['$scope', 'summonerService', function($sc
 lolApp.controller('SummonerDetailCtrl', ['$scope', '$routeParams', '$http', 'summonerService',
   function($scope, $routeParams, $http, summonerService) {
     $scope.summoner = summonerService.get({region: $routeParams.region, name: $routeParams.name});
+    $scope.loading = false;
 
+    // TODO: This should probably be in a service.
     $scope.updateSummonerFromURL = function() {
-      var responsePromise = $http.post('http://127.0.0.1:8001/summoner/ajax_query_start',
-        {region: $routeParams.region, name: $routeParams.name});
-
-      responsePromise.success(function(data, status, headers, config) {
-        console.log('SUCCESS');
-        console.log(data);
-        console.log(status);
-        console.log(headers);
-        console.log(config);
+      $scope.loading = true;
+      var responsePromise = $http({
+        method: 'POST',
+        url: 'http://127.0.0.1:8001/summoner/ajax_query_start',
+        data: {region: $routeParams.region, name: $routeParams.name},
+        headers: {'content-type': 'application/x-www-form-urlencoded'},
+        transformRequest: function(obj) {
+          var str = [];
+          for(var p in obj)
+            str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+          return str.join("&");
+        }
       });
-      responsePromise.error(function(data, status, headers, config) {
-        console.log('ERROR');
-        console.log(data);
-        console.log(status);
-        console.log(headers);
-        console.log(config);
+
+      responsePromise.success(function(data, status) {
+        console.log('success on updateSummonerFromURL...');
+        console.log('data: ' + data);
+        console.log('status: ' + status);
+
+        // This is the task ID we query repeatedly to find out when the update is done.
+        $scope.taskID = data;
+
+        if (timerID) {
+          clearInterval(timerID);
+        }
+
+        var timerID = setInterval(function() {
+          var taskResponsePromise = $http({
+            method: 'POST',
+            url: 'http://127.0.0.1:8001/api/task_state',
+            data: {task_id: $scope.taskID},
+            headers: {'content-type': 'application/x-www-form-urlencoded'},
+            transformRequest: function (obj) {
+              var str = [];
+              for (var p in obj)
+                str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+              return str.join("&");
+            }
+          });
+
+          taskResponsePromise.success(function(data, status) {
+            console.log('success on taskResponsePromise...');
+            // Django returns SUCCESS in double quotes here, so check for them...
+            if(data=='"SUCCESS"') {
+              console.log(data);
+              console.log(status);
+              clearInterval(timerID);
+              $scope.loading = false;
+            }
+          });
+
+          taskResponsePromise.error(function(data, status) {
+            console.log('error on taskResponsePromise...');
+            console.log(data);
+            console.log(status);
+          });
+        }, 300);
+
+      });
+      responsePromise.error(function(data, status) {
+        console.log('error on updateSummonerFromURL...');
+        console.log('data: ' + data);
+        console.log('status: ' + status);
+      });
+
+    };
+
+    $scope.getTaskState = function(taskID) {
+      var responsePromise = $http({
+        method: 'POST',
+        url: 'http://127.0.0.1:8001/api/task_state',
+        data: {task_id: taskID},
+        headers: {'content-type': 'application/x-www-form-urlencoded'},
+        transformRequest: function(obj) {
+          var str = [];
+          for(var p in obj)
+            str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+          return str.join("&");
+        }
+      });
+
+      responsePromise.success(function(data, status) {
+        console.log('success on getTaskState...');
+        console.log('data: ' + data);
+        console.log('status: ' + status);
       })
     };
 }]);

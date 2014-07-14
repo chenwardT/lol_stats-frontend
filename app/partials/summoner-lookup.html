@@ -5,23 +5,22 @@
     Region
   </label>
   <select ng-model="region">
-    <option>NA</option>
-    <option>EUW</option>
-    <option>EUNE</option>
-    <option>BR</option>
-    <option>LAN</option>
-    <option>LAS</option>
-    <option>KR</option>
-    <option>OCE</option>
-    <option>RU</option>
-    <option>TR</option>
+    <option selected="selected" value="na">NA</option>
+    <option value="euw">EUW</option>
+    <option value="eune">EUNE</option>
+    <option value="br">BR</option>
+    <option value="lan">LAN</option>
+    <option value="las">LAS</option>
+    <option value="kr">KR</option>
+    <option value="oce">OCE</option>
+    <option value="ru">RU</option>
+    <option value="tr">TR</option>
   </select>
 
   <label for="name">
     Name
   </label>
-  <input type="text"
-         ng-model="name" />
+  <input type="text" ng-model="name" />
 
   <button type="button" class="btn btn-default" ng-click="toSummonerDetail(region, name)">Search</button>
 
