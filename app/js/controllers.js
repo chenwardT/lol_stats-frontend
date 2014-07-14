@@ -30,13 +30,33 @@ lolApp.controller('SummonerListCtrl', ['$scope', 'summonerService', function($sc
   $scope.orderProp = 'name';
 }]);
 
-lolApp.controller('SummonerDetailCtrl', ['$scope', '$routeParams', 'summonerService',
-  function($scope, $routeParams, summonerService) {
+lolApp.controller('SummonerDetailCtrl', ['$scope', '$routeParams', '$http', 'summonerService',
+  function($scope, $routeParams, $http, summonerService) {
     $scope.summoner = summonerService.get({region: $routeParams.region, name: $routeParams.name});
+
+    $scope.updateSummonerFromURL = function() {
+      var responsePromise = $http.post('http://127.0.0.1:8001/summoner/ajax_query_start',
+        {region: $routeParams.region, name: $routeParams.name});
+
+      responsePromise.success(function(data, status, headers, config) {
+        console.log('SUCCESS');
+        console.log(data);
+        console.log(status);
+        console.log(headers);
+        console.log(config);
+      });
+      responsePromise.error(function(data, status, headers, config) {
+        console.log('ERROR');
+        console.log(data);
+        console.log(status);
+        console.log(headers);
+        console.log(config);
+      })
+    };
 }]);
 
-lolApp.controller('SummonerLookupCtrl', ['$scope', '$timeout', 'summonerService',
-  function($scope, $timeout, summonerService) {
+lolApp.controller('SummonerLookupCtrl', ['$scope', '$timeout', '$location', 'summonerService',
+  function($scope, $timeout, $location, summonerService) {
     var timeout;
 
     $scope.$watch('name', function(newName) {
@@ -49,6 +69,10 @@ lolApp.controller('SummonerLookupCtrl', ['$scope', '$timeout', 'summonerService'
         }, 350);
       }
     });
+
+    $scope.toSummonerDetail = function(region, name) {
+      $location.path('/summoner/' + region + '/' + name);
+    }
 
 //    $scope.$watch('name', function(newName) {
 //      $scope.summonerInfo = summonerService.get({region: $scope.region, name: newName});

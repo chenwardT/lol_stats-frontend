@@ -23,6 +23,8 @@
   <input type="text"
          ng-model="name" />
 
+  <button type="button" class="btn btn-default" ng-click="toSummonerDetail(region, name)">Search</button>
+
   <ul>
     <li ng-repeat="(k, v) in summonerInfo">{{k}}: {{v}}</li>
   </ul>
