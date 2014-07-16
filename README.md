@@ -8,3 +8,5 @@ provides a RESTful API as well as supporting AJAX requests for certain utility f
 
 This project was created from [angular-seed](https://github.com/angular/angular-seed), as such
 some files may not reflect the exact nature of this project yet (ex. LICENSE, etc).
+
+Protip: In Chrome DevTools, click gear icon > General > Disable cache (while DevTools is open).

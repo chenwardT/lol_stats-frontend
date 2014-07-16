@@ -33,7 +33,6 @@ lolApp.controller('SummonerListCtrl', ['$scope', 'summonerService', function($sc
 lolApp.controller('SummonerDetailCtrl',
   ['$scope', '$routeParams', '$http', 'summonerService', 'matchHistoryService',
     function($scope, $routeParams, $http, summonerService, matchHistoryService) {
-      $scope.summoner = summonerService.get({region: $routeParams.region, name: $routeParams.name});
       $scope.loading = false;   // This lets us toggle things in the view. (i.e. ng-show)
 
       // TODO: The $http call should probably be in a service.
@@ -93,6 +92,8 @@ lolApp.controller('SummonerDetailCtrl',
                 console.log(status);
                 clearInterval(timerID);
                 $scope.loading = false;   // Update our model so the view can change.
+                $scope.refreshSummonerInfo();
+                $scope.refreshGames();
               }
             });
 
@@ -113,29 +114,37 @@ lolApp.controller('SummonerDetailCtrl',
 
       };
 
+      // Summoner Info
+
+      $scope.summonerInfo = summonerService.get({region: $routeParams.region, name: $routeParams.name});
+
+      $scope.refreshSummonerInfo = function() {
+        $scope.summonerInfo = summonerService.get({region: $routeParams.region, name: $routeParams.name});
+      }
+
       // Match History
 
       $scope.games = matchHistoryService.get({region: $routeParams.region, name: $routeParams.name});
 
-      $scope.update = function() {
+      $scope.refreshGames = function() {
         $scope.games = matchHistoryService.get({region: $routeParams.region, name: $routeParams.name});
       };
 }]);
 
 lolApp.controller('SummonerLookupCtrl', ['$scope', '$timeout', '$location', 'summonerService',
   function($scope, $timeout, $location, summonerService) {
-    var timeout;
-
-    $scope.$watch('name', function(newName) {
-      if (newName) {
-        // If there is a timeout already in progress
-        if (timeout) $timeout.cancel(timeout);
-
-        timeout = $timeout(function() {
-          $scope.summonerInfo = summonerService.get({region: $scope.region, name: newName})
-        }, 350);
-      }
-    });
+//    var timeout;
+//
+//    $scope.$watch('name', function(newName) {
+//      if (newName) {
+//        // If there is a timeout already in progress
+//        if (timeout) $timeout.cancel(timeout);
+//
+//        timeout = $timeout(function() {
+//          $scope.summonerInfo = summonerService.get({region: $scope.region, name: newName})
+//        }, 350);
+//      }
+//    });
 
     $scope.toSummonerDetail = function(region, name) {
       $location.path('/summoner/' + region + '/' + name);

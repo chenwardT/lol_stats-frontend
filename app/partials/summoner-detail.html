@@ -1,4 +1,8 @@
 <div>
+  <div ng-controller="SummonerLookupCtrl">
+    <div ng-include="'partials/summoner-lookup.html'"></div>
+  </div>
+
   <h3>Summoner Details</h3>
   <button type="button" class="btn btn-default" ng-click="updateSummonerFromURL()">Update Data</button>
   <div ng-show="loading">
@@ -6,10 +10,10 @@
     <div us-spinner></div>
   </div>
   <ul>
-    <li>Name: {{summoner.name}}</li>
-    <li>ID: {{summoner.summoner_id}}</li>
-    <li>Level: {{summoner.summoner_level}}</li>
-    <li>Region: {{summoner.region}}</li>
+    <li>Name: {{summonerInfo.name}}</li>
+    <li>ID: {{summonerInfo.summoner_id}}</li>
+    <li>Level: {{summonerInfo.summoner_level}}</li>
+    <li>Region: {{summonerInfo.region}}</li>
   </ul>
 
   <div>

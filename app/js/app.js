@@ -31,3 +31,5 @@ config(['$routeProvider', '$resourceProvider', '$httpProvider',
       // Django, by default, doesn't like JSON, so change content-type to what it likes
       //$httpProvider.defaults.headers.post = {'content-type': 'application/x-www-form-urlencoded'};
 }]);
+
+lolApp.constant('backendURL', 'http://127.0.0.1:8001');
