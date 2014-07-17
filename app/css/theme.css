@@ -16,3 +16,231 @@ body {
 .theme-showcase .navbar .container {
   width: auto;
 }
+
+div {
+  border: 0px cornflowerblue dashed;
+}
+
+.caption {
+  font-family: Arial;
+  font-size: .75em;
+  color: #898989;
+}
+
+.gameBox {
+  margin: 3px 3px 3px 3px;
+}
+
+.gameBoxHeader {
+  background-color: lightskyblue;
+  font-family: Arial;
+  font-size: .85em;
+  height: 23px;
+  padding: 5px 5px 5px 5px;
+  text-shadow: rgba(255, 255, 255, 0.4) 0px 1px 0px;
+}
+
+.gameBoxHeaderLeft {
+  float: left;
+}
+
+.gameBoxHeaderRight {
+  right: 5px;
+  text-align: right;
+  display: inline;
+  float: right;
+}
+
+.matchType {
+  font-weight: bold;
+}
+
+.matchAge {
+  color: #6b696a;
+}
+
+.gameBoxContent {
+  background-color: lightblue;
+}
+
+.gameBasicStats {
+  display: table;
+}
+
+.championAndSpells {
+  width: 109px;
+  height: 85px;
+  display: table-cell;
+  vertical-align: top;
+  padding: 10px 5px 0px 10px;
+}
+
+.championName {
+  font-weight: bold;
+  font-size: .85em;
+}
+
+.championImage {
+  display: inline;
+}
+
+.championImage > img {
+  height: 55px;
+  width: 55px;
+  border-radius: 50%;
+}
+
+.championName {
+  width: 55px;
+  text-align: center;
+}
+
+.spells {
+  display: block;
+  float: right;
+  vertical-align: middle;
+}
+
+.spell1 > img {
+  height: 27px;
+  width: 27px;
+}
+
+.spell2 > img {
+  height: 27px;
+  width: 27px;
+}
+
+/* spell1 and spell2 */
+.spells > div > img {
+  border-radius: 10%;
+}
+
+.gameStats {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 0px 0px 0px 5px;
+}
+
+.kda {
+  text-align: center;
+  font-family: Arial;
+  font-weight: 700;
+}
+
+.deaths {
+  color: red;
+}
+
+.kdaRatio {
+  text-align: center;
+  color: #898989;
+  font-size: .8em;
+}
+
+.kdaRatioText {
+  background-color: rgb(80, 113, 146);
+  padding: 2px 4px 2px 4px;
+  color: #ECF0F1;
+  font-size: 11px;
+  font-weight: bold;
+  text-shadow: rgba(0, 0, 0, 0.2) 0px 1px 0px;
+}
+
+.gameStats2 {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  font-family: Arial;
+  font-size: .9em;
+  padding: 0px 5px 0px 5px;
+}
+
+.levelValue {
+  font-weight: bold;
+}
+
+.csValue {
+  color: #197b1f;
+  font-weight: bold;
+}
+
+.goldValue {
+  color: #e75f21;
+  font-weight: bold;
+}
+
+.sightWards {
+  color: green;
+  font-weight: bold;
+}
+
+.visionWards {
+  color: #ff009b;
+  font-weight: bold;
+}
+
+.items {
+  display: table-cell;
+  width: 110px;
+  vertical-align: middle;
+  padding: 0px 5px 0px 0px;
+}
+
+/* item0-5 */
+div.items > div {
+  height: 32px;
+  width: 32px;
+  display: inline-block;
+}
+
+/* item0-5 */
+div.items > div > img {
+  height: 32px;
+  width: 32px;
+  display: table-cell;
+  border-radius: 10%;
+}
+
+.trinket {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  padding: 0px 10px 0px 5px;
+}
+
+.item6 {
+  display: inline-block;
+}
+
+.caption {
+  display: block;
+}
+
+/*.participants {*/
+  /*display: table-cell;*/
+/*}*/
+
+.teams {
+  width: 275px;
+}
+
+.team {
+  width: 125px;
+  display: inline-block;
+}
+
+.championIcon {
+  display: inline-block;
+}
+
+.championIcon > img {
+  height: 16px;
+  width: 16px;
+}
+
+.participantName {
+  display: inline-block;
+  font-size: 12px;
+  font-family: Arial;
+}
