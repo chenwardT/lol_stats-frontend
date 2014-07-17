@@ -9,12 +9,25 @@
     taskID: {{taskID}}
     <div us-spinner></div>
   </div>
-  <ul>
-    <li>Name: {{summonerInfo.name}}</li>
-    <li>ID: {{summonerInfo.summoner_id}}</li>
-    <li>Level: {{summonerInfo.summoner_level}}</li>
-    <li>Region: {{summonerInfo.region}}</li>
-  </ul>
+
+  <summoner-basic-info></summoner-basic-info>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="sumInfoBox">.sumInfoBox
+          <div class="col-md-6">League Rank Icon</div>
+          <div class="col-md-6">Basic Summoner Info
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="matchHistBox">
+          <recent-game ng-repeat="game in games.results"></recent-game>
+        </div> <!-- matchHistBox -->
+      </div> <!-- col-md-9 -->
+    </div> <!-- row -->
+  </div> <!-- container -->
 
   <!--<div>-->
     <!--<ul>-->
