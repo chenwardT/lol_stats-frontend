@@ -23,6 +23,8 @@ config(['$routeProvider', '$resourceProvider', '$httpProvider',
         {templateUrl: 'partials/summoner-lookup.html', controller: 'SummonerLookupCtrl'});
       $routeProvider.when('/summoner/:region/:name',
         {templateUrl: 'partials/summoner-detail.html', controller: 'SummonerDetailCtrl'});
+      $routeProvider.when('/test',
+        {templateUrl: 'partials/test.html', controller: 'HomeCtrl'});
       $routeProvider.otherwise({redirectTo: '/'});
 
       // This header must be sent for AJAX calls for Django's is_ajax() to recognize them.

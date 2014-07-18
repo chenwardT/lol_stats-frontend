@@ -32,12 +32,19 @@ div {
 }
 
 .gameBoxHeader {
-  background-color: lightskyblue;
   font-family: Arial;
   font-size: .85em;
   height: 23px;
   padding: 5px 5px 5px 5px;
   text-shadow: rgba(255, 255, 255, 0.4) 0px 1px 0px;
+}
+
+.winHeader {
+  background-color: #9fceed;
+}
+
+.lossHeader {
+  background-color: #e3b3af;
 }
 
 .gameBoxHeaderLeft {
@@ -56,11 +63,25 @@ div {
 }
 
 .matchAge {
-  color: #6b696a;
+  color: #747173;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.ipEarned {
+
 }
 
 .gameBoxContent {
-  background-color: lightblue;
+
+}
+
+.winContent {
+  background-color: #b5d9f1;
+}
+
+.lossContent {
+  background-color: #eac5c2;
 }
 
 .gameBasicStats {
@@ -68,7 +89,7 @@ div {
 }
 
 .championAndSpells {
-  width: 109px;
+  width: 105px;
   height: 85px;
   display: table-cell;
   vertical-align: top;
@@ -120,12 +141,14 @@ div {
   display: table-cell;
   vertical-align: middle;
   padding: 0px 0px 0px 5px;
+  width: 80px;
 }
 
 .kda {
   text-align: center;
   font-family: Arial;
   font-weight: 700;
+  font-size: 1.1em;
 }
 
 .deaths {
@@ -154,6 +177,7 @@ div {
   font-family: Arial;
   font-size: .9em;
   padding: 0px 5px 0px 5px;
+  width: 80px;
 }
 
 .levelValue {
@@ -182,13 +206,13 @@ div {
 
 .items {
   display: table-cell;
-  width: 110px;
-  vertical-align: middle;
+  width: 115px;
+  vertical-align: top;
   padding: 0px 5px 0px 0px;
 }
 
 /* item0-5 */
-div.items > div {
+div.items > game-item > div {
   height: 32px;
   width: 32px;
   display: inline-block;
@@ -207,22 +231,30 @@ div.items > div > img {
   text-align: center;
   vertical-align: middle;
   padding: 0px 10px 0px 5px;
+  width: 33px;
 }
 
 .item6 {
   display: inline-block;
 }
 
+div.trinket > div > img {
+  width: 32px;
+  height: 32px;
+}
+
 .caption {
   display: block;
 }
 
-/*.participants {*/
-  /*display: table-cell;*/
-/*}*/
+.participants {
+  display: table-cell;
+  padding-left: 5px;
+}
 
 .teams {
   width: 275px;
+  float: right;
 }
 
 .team {
