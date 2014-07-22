@@ -373,7 +373,6 @@ lolApp.filter('nullToZero', function() {
 
 lolApp.filter('itemOrBlank', function() {
   return function(id) {
-    console.log('itemOrBlack id = ' + id);
     if (id==null) {
       return '';
     } else {

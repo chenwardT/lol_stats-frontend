@@ -31,8 +31,8 @@ lolApp.controller('SummonerListCtrl', ['$scope', 'summonerService', function($sc
 }]);
 
 lolApp.controller('SummonerDetailCtrl',
-  ['$scope', '$routeParams', '$http', 'summonerService', 'matchHistoryService',
-    function($scope, $routeParams, $http, summonerService, matchHistoryService) {
+  ['$scope', '$routeParams', '$http', 'summonerService', 'matchHistoryService', 'backendUrl',
+    function($scope, $routeParams, $http, summonerService, matchHistoryService, backendUrl) {
       $scope.loading = false;   // This lets us toggle things in the view. (i.e. ng-show)
 
       // TODO: The $http call should probably be in a service.

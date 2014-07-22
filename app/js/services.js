@@ -9,27 +9,27 @@ var lolApp = angular.module('lolApp.services', ['ngResource']);
 lolApp.value('version', '0.1');
 
 
-lolApp.factory('championService', function($http) {
+lolApp.factory('championService', ['$http', 'backendUrl', function($http, backendUrl) {
   var championAPI = {};
 
-  championAPI.getChampions = function () {
+  championAPI.getChampions = function() {
     return $http({
       method: 'GET',
-      url: 'http://127.0.0.1:8001/api/champions'
+      url: backendUrl + '/api/champions'
     });
-  }
+  };
 
   return championAPI;
-});
+}]);
 
-lolApp.factory('summonerService', ['$resource', function($resource) {
-  return $resource('http://127.0.0.1:8001/api/summoners/:region/:name',
+lolApp.factory('summonerService', ['$resource', 'backendUrl', function($resource, backendUrl) {
+  return $resource(backendUrl + '/api/summoners/:region/:name',
     {region: '@region', name: '@name'}
   );
 }]);
 
-lolApp.factory('matchHistoryService', ['$resource', function($resource) {
-  return $resource('http://127.0.0.1:8001/api/games/:region/:name',
+lolApp.factory('matchHistoryService', ['$resource', 'backendUrl', function($resource, backendUrl) {
+  return $resource(backendUrl + '/api/games/:region/:name',
     {region: '@region', name: '@name'}
   );
 }]);

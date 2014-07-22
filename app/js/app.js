@@ -34,4 +34,10 @@ config(['$routeProvider', '$resourceProvider', '$httpProvider',
       //$httpProvider.defaults.headers.post = {'content-type': 'application/x-www-form-urlencoded'};
 }]);
 
-lolApp.constant('backendURL', 'http://127.0.0.1:8001');
+// Only ONE of the below backendURL constants should be uncommented.
+
+// Uncomment for internal testing.
+lolApp.constant('backendUrl', 'http://127.0.0.1:8001');
+
+// Uncomment for public access.
+//lolApp.constant('backendURL', 'http://sigil.no-ip.org:8081');
