@@ -120,7 +120,7 @@ lolApp.controller('SummonerDetailCtrl',
 
       $scope.refreshSummonerInfo = function() {
         $scope.summonerInfo = summonerService.get({region: $routeParams.region, name: $routeParams.name});
-      }
+      };
 
       // Match History
 
@@ -148,7 +148,7 @@ lolApp.controller('SummonerLookupCtrl', ['$scope', '$timeout', '$location', 'sum
 
     $scope.toSummonerDetail = function(region, name) {
       $location.path('/summoner/' + region + '/' + name);
-    }
+    };
 
 //    $scope.$watch('name', function(newName) {
 //      $scope.summonerInfo = summonerService.get({region: $scope.region, name: newName});

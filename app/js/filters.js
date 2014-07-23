@@ -275,7 +275,7 @@ lolApp.filter('championNameDD', function() {
       case 92:
         return 'Riven';
       case 96:
-        return 'Kogmaw';
+        return 'KogMaw';
       case 98:
         return 'Shen';
       case 99:
@@ -376,7 +376,7 @@ lolApp.filter('itemOrBlank', function() {
     if (id==null) {
       return '';
     } else {
-      return 'height: 32px; background-image: url(http://ddragon.leagueoflegends.com/cdn/4.12.2/img/item/' + id + '.png); background-size: 32px 32px;';
+      return 'background-image: url(http://ddragon.leagueoflegends.com/cdn/4.12.2/img/item/' + id + '.png);';
     }
   };
 });

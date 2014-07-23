@@ -40,14 +40,82 @@ lolApp.directive('gameItems', function() {
   };
 });
 
+// Display the summoner's items.
+// Does not include trinket.
 lolApp.directive('gameItem', function() {
   return {
     restrict: 'E',
-    template: '<div class="item0" style={{game.stats.item0|itemOrBlank}}><div style="width: 32px; height: 32px; display: inline-block"></div></div>' +
-              '<div class="item1" style={{game.stats.item1|itemOrBlank}}><div style="width: 32px; height: 32px; display: inline-block"></div></div>' +
-              '<div class="item2" style={{game.stats.item2|itemOrBlank}}><div style="width: 32px; height: 32px; display: inline-block"></div></div>' +
-              '<div class="item3" style={{game.stats.item3|itemOrBlank}}><div style="width: 32px; height: 32px; display: inline-block"></div></div>' +
-              '<div class="item4" style={{game.stats.item4|itemOrBlank}}><div style="width: 32px; height: 32px; display: inline-block"></div></div>' +
-              '<div class="item5" style={{game.stats.item5|itemOrBlank}}><div style="width: 32px; height: 32px; display: inline-block"></div></div>'
+    template: '<div class="item0" style={{game.stats.item0|itemOrBlank}}><div class="itemBackImg"></div></div>' +
+              '<div class="item1" style={{game.stats.item1|itemOrBlank}}><div class="itemBackImg"></div></div>' +
+              '<div class="item2" style={{game.stats.item2|itemOrBlank}}><div class="itemBackImg"></div></div>' +
+              '<div class="item3" style={{game.stats.item3|itemOrBlank}}><div class="itemBackImg"></div></div>' +
+              '<div class="item4" style={{game.stats.item4|itemOrBlank}}><div class="itemBackImg"></div></div>' +
+              '<div class="item5" style={{game.stats.item5|itemOrBlank}}><div class="itemBackImg"></div></div>'
+  };
+});
+
+// Display the summoner's trinket.
+lolApp.directive('gameTrinket', function() {
+  return {
+    restrict: 'E',
+    template: '<div class="item6" style={{game.stats.item6|itemOrBlank}}><div class="itemBackImg"></div></div>'
+  };
+});
+
+// Display the participants of a single match.
+// TODO: Consider refactoring to use a 2-dimensional array instead of an array for each team.
+lolApp.directive('gameParticipants', function() {
+  return {
+    restrict: 'E',
+    templateUrl: 'partials/game-participants.html',
+    replace: true, // We need to get things to display properly w/this false.
+    scope: true, //{ game: '=game'},
+    controller: function($scope) {
+      $scope.team100 = [];
+      $scope.team200 = [];
+
+      // The data for the summoner whose history we are looking at.
+      // Necessary because this player's data is not part of the player_set.
+      var thisSummoner = {
+        summoner: {
+          summoner_id: $scope.summonerInfo.summoner_id,
+          name: $scope.summonerInfo.name
+        },
+        champion: {
+          champion_id: $scope.game.champion_id,
+          key: $scope.game.champion_key
+        },
+        team_id: $scope.game.team_id
+      };
+
+      // First, add summoner whose history we're checking to the right team.
+      if ($scope.game.team_id == 100) {
+        $scope.team100.push(thisSummoner);
+      } else {
+        $scope.team200.push(thisSummoner);
+      }
+
+      // Then, add each member of player_set to the proper team.
+      for ( var i = 0; i < $scope.game.player_set.length; i++ ) {
+        var thisPlayer = $scope.game.player_set[i];
+
+        if (thisPlayer.team_id == 100) {
+          $scope.team100.push(thisPlayer);
+        } else {
+          $scope.team200.push(thisPlayer);
+        }
+
+        //console.log(thisPlayer);
+      }
+
+      console.log('team 100: ');
+      for ( var j = 0; j < $scope.team100.length; j++ ) {
+        console.log($scope.team100[j]);
+      }
+      console.log('team 200: ');
+      for ( var j = 0; j < $scope.team200.length; j++ ) {
+        console.log($scope.team200[j]);
+      }
+    }
   };
 });

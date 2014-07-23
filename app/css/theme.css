@@ -31,6 +31,8 @@ div {
   margin: 3px 3px 3px 3px;
 }
 
+/* Game Header */
+
 .gameBoxHeader {
   font-family: Arial;
   font-size: .85em;
@@ -72,6 +74,8 @@ div {
 
 }
 
+/* Game Box Content */
+
 .gameBoxContent {
 
 }
@@ -86,14 +90,16 @@ div {
 
 .gameBasicStats {
   display: table;
+  height: 95px;
 }
 
 .championAndSpells {
   width: 105px;
-  height: 85px;
+  /*height: 85px;*/
   display: table-cell;
-  vertical-align: top;
+  vertical-align: middle;
   padding: 10px 5px 0px 10px;
+  position: relative;
 }
 
 .championName {
@@ -125,6 +131,7 @@ div {
 .spell1 > img {
   height: 27px;
   width: 27px;
+  margin-bottom: 5px;
 }
 
 .spell2 > img {
@@ -206,9 +213,16 @@ div {
 
 .items {
   display: table-cell;
-  width: 115px;
+  width: 120px;
+  /*height: 95px;*/
   vertical-align: top;
-  padding: 0px 5px 0px 0px;
+  padding: 0px 10px 0px 0px;
+}
+
+.itemBackImg {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
 }
 
 /* item0-5 */
@@ -216,15 +230,18 @@ div.items > game-item > div {
   height: 32px;
   width: 32px;
   display: inline-block;
+  margin: 1px;
+  background-size: 32px 32px;
+  border-radius: 10%;
 }
 
 /* item0-5 */
-div.items > div > img {
-  height: 32px;
-  width: 32px;
-  display: table-cell;
-  border-radius: 10%;
-}
+/*div.items > div > img {*/
+  /*height: 32px;*/
+  /*width: 32px;*/
+  /*display: table-cell;*/
+  /*border-radius: 10%;*/
+/*}*/
 
 .trinket {
   display: table-cell;
@@ -236,6 +253,8 @@ div.items > div > img {
 
 .item6 {
   display: inline-block;
+  background-size: 32px 32px;
+  border-radius: 10%;
 }
 
 div.trinket > div > img {
@@ -255,6 +274,9 @@ div.trinket > div > img {
 .teams {
   width: 275px;
   float: right;
+  display: block;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .team {
@@ -271,8 +293,14 @@ div.trinket > div > img {
   width: 16px;
 }
 
+.participant {
+  padding: 0;
+  margin: 0;
+  height: 18px;
+}
+
 .participantName {
   display: inline-block;
-  font-size: 12px;
-  font-family: Arial;
+  font-size: 11px;
+  font-family: AppleSDGothicNeo-Regular, Dotum, AppleSDGothic, 'Apple SD Gothic Neo', AppleGothic;
 }
