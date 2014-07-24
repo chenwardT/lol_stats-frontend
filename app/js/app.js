@@ -36,8 +36,11 @@ config(['$routeProvider', '$resourceProvider', '$httpProvider',
 
 // Only ONE of the below backendURL constants should be uncommented.
 
-// Uncomment for internal testing.
+// Uncomment for local testing.
 lolApp.constant('backendUrl', 'http://127.0.0.1:8001');
+
+// Uncomment for internal testing.
+//lolApp.constant('backendUrl', 'http://192.168.1.101:8001');
 
 // Uncomment for public access.
 //lolApp.constant('backendURL', 'http://sigil.no-ip.org:8081');

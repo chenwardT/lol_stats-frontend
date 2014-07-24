@@ -108,14 +108,14 @@ lolApp.directive('gameParticipants', function() {
         //console.log(thisPlayer);
       }
 
-      console.log('team 100: ');
-      for ( var j = 0; j < $scope.team100.length; j++ ) {
-        console.log($scope.team100[j]);
-      }
-      console.log('team 200: ');
-      for ( var j = 0; j < $scope.team200.length; j++ ) {
-        console.log($scope.team200[j]);
-      }
+//      console.log('team 100: ');
+//      for ( var j = 0; j < $scope.team100.length; j++ ) {
+//        console.log($scope.team100[j]);
+//      }
+//      console.log('team 200: ');
+//      for ( var j = 0; j < $scope.team200.length; j++ ) {
+//        console.log($scope.team200[j]);
+//      }
     }
   };
 });
