@@ -14,6 +14,7 @@
     "angular-resource": "~1.2.x",
     "bootstrap": "~3.2.x",
     "angular-spinner": "~0.5.x",
-    "angular-sanitize": "~1.2.x"
+    "angular-sanitize": "~1.2.x",
+    "angular-cookies": "~1.2.x"
   }
 }

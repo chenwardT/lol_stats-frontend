@@ -131,8 +131,8 @@ lolApp.controller('SummonerDetailCtrl',
       };
 }]);
 
-lolApp.controller('SummonerLookupCtrl', ['$scope', '$timeout', '$location', 'summonerService',
-  function($scope, $timeout, $location, summonerService) {
+lolApp.controller('SummonerLookupCtrl', ['$scope', '$timeout', '$location', '$cookieStore',
+  function($scope, $timeout, $location, $cookieStore) {
 //    var timeout;
 //
 //    $scope.$watch('name', function(newName) {
@@ -146,8 +146,54 @@ lolApp.controller('SummonerLookupCtrl', ['$scope', '$timeout', '$location', 'sum
 //      }
 //    });
 
+    $scope.preferredRegion = $cookieStore.get('preferredRegion') || 'na';
+
+    $scope.regionOptions = [
+      {
+        name: 'NA',
+        value: 'na'
+      },
+      {
+        name: 'EUW',
+        value: 'euw'
+      },
+      {
+        name: 'EUNE',
+        value: 'eune'
+      },
+      {
+        name: 'BR',
+        value: 'br'
+      },
+      {
+        name: 'LAN',
+        value: 'lan'
+      },
+      {
+        name: 'LAS',
+        value: 'las'
+      },
+      {
+        name: 'KR',
+        value: 'kr'
+      },
+      {
+        name: 'OCE',
+        value: 'oce'
+      },
+      {
+        name: 'RU',
+        value: 'ru'
+      },
+      {
+        name: 'TR',
+        value: 'tr'
+      },
+    ];
+
     $scope.toSummonerDetail = function(region, name) {
       $location.path('/summoner/' + region + '/' + name);
+      $cookieStore.put('preferredRegion', region);
     };
 
 //    $scope.$watch('name', function(newName) {

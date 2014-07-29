@@ -45,12 +45,7 @@ lolApp.directive('gameItems', function() {
 lolApp.directive('gameItem', function() {
   return {
     restrict: 'E',
-    template: '<div class="item0" style={{game.stats.item0|itemOrBlank}}><div class="itemBackImg"></div></div>' +
-              '<div class="item1" style={{game.stats.item1|itemOrBlank}}><div class="itemBackImg"></div></div>' +
-              '<div class="item2" style={{game.stats.item2|itemOrBlank}}><div class="itemBackImg"></div></div>' +
-              '<div class="item3" style={{game.stats.item3|itemOrBlank}}><div class="itemBackImg"></div></div>' +
-              '<div class="item4" style={{game.stats.item4|itemOrBlank}}><div class="itemBackImg"></div></div>' +
-              '<div class="item5" style={{game.stats.item5|itemOrBlank}}><div class="itemBackImg"></div></div>'
+    templateUrl: 'partials/game-item.html'
   };
 });
 
@@ -68,7 +63,7 @@ lolApp.directive('gameParticipants', function() {
   return {
     restrict: 'E',
     templateUrl: 'partials/game-participants.html',
-    replace: true, // We need to get things to display properly w/this false.
+    replace: true, // We need to get things to display properly w/this set to false.
     scope: true, //{ game: '=game'},
     controller: function($scope) {
       $scope.team100 = [];

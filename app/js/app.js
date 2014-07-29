@@ -5,6 +5,7 @@
 var lolApp = angular.module('lolApp', [
   'ngRoute',
   'ngResource',
+  'ngCookies',
   'angularSpinner',
   'lolApp.filters',
   'lolApp.services',

@@ -1,3 +1,7 @@
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
 body {
   padding-top: 70px;
   padding-bottom: 30px;
@@ -29,7 +33,7 @@ div {
 
 .gameBox {
   margin: 3px 3px 3px 3px;
-  width: 691px;
+  width: 700px;
 }
 
 /* Game Header */
@@ -220,10 +224,10 @@ game-items {
 
 .items {
   display: table-cell;
-  width: 120px;
+  width: 125px;
   /*height: 95px;*/
   vertical-align: middle;
-  padding: 0px 10px 0px 0px;
+  padding: 0px 5px 0px 0px;
   text-align: center;
 }
 
@@ -293,7 +297,7 @@ game-participants {
 }
 
 .team {
-  width: 125px;
+  width: 140px;
   display: table-cell;
 }
 
@@ -313,6 +317,14 @@ game-participants {
   display: block;
   /*overflow-x: hidden;*/
   /*overflow-y: hidden;*/
+}
+
+.championIcon {
+  border-image-width: 0;
+}
+
+.championIcon > img {
+  border-image-width: 0;
 }
 
 .participantName {
