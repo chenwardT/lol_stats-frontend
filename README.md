@@ -10,3 +10,5 @@ This project was created from [angular-seed](https://github.com/angular/angular-
 some files may not reflect the exact nature of this project yet (ex. LICENSE, etc).
 
 Protip: In Chrome DevTools, click gear icon > General > Disable cache (while DevTools is open).
+
+This product is not endorsed, certified or otherwise approved in any way by Riot Games, Inc. or any of its affiliates.
