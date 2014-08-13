@@ -31,8 +31,8 @@ lolApp.controller('SummonerListCtrl', ['$scope', 'summonerService', function($sc
 }]);
 
 lolApp.controller('SummonerDetailCtrl',
-  ['$scope', '$routeParams', '$http', 'summonerService', 'matchHistoryService', 'backendUrl',
-    function($scope, $routeParams, $http, summonerService, matchHistoryService, backendUrl) {
+  ['$scope', '$routeParams', '$http', 'summonerService', 'matchHistoryService', 'teamService', 'soloQueueService', 'backendUrl',
+    function($scope, $routeParams, $http, summonerService, matchHistoryService, teamService, soloQueueService, backendUrl) {
       $scope.loading = false;   // This lets us toggle things in the view. (i.e. ng-show)
 
       // TODO: The $http call should probably be in a service.
@@ -114,9 +114,20 @@ lolApp.controller('SummonerDetailCtrl',
 
       };
 
-      // Summoner Info
+      // Basic Summoner Info
 
-      $scope.summonerInfo = summonerService.get({region: $routeParams.region, name: $routeParams.name});
+      var summoner_id = -1;
+
+      $scope.summonerInfo = summonerService.get({region: $routeParams.region, name: $routeParams.name}, function(info) {
+        console.log('info.summoner_id: ' + info.summoner_id)
+        summoner_id = info.summoner_id;
+        console.log('summoner_id: ' + summoner_id);
+
+        // We query soloQueue data in here b/c we need to resolve summonerInfo.summoner_id to make the call.
+        // This maybe should be redone to accept $routeParams.name instead.
+        $scope.soloQueue = soloQueueService.get({region: $routeParams.region, id: info.summoner_id});
+        console.log($scope.soloQueue);
+      });
 
       $scope.refreshSummonerInfo = function() {
         $scope.summonerInfo = summonerService.get({region: $routeParams.region, name: $routeParams.name});
@@ -129,6 +140,36 @@ lolApp.controller('SummonerDetailCtrl',
       $scope.refreshGames = function() {
         $scope.games = matchHistoryService.get({region: $routeParams.region, name: $routeParams.name});
       };
+
+      // Team(s)
+
+      var std_name = $routeParams.name.toLowerCase();
+      std_name = std_name.replace(' ', '');
+
+      $scope.teams = teamService.get({region: $routeParams.region, name: std_name});
+
+//      $scope.refreshTeams = function() {
+//        $scope.teams = teamService.get({region: $routeParams.region, name: std_name});
+//      };
+
+      // Solo Queue League Info
+
+//      console.log(typeof summonerInfo);
+//      console.log(summonerInfo.summoner_id);
+
+//      var summoner_info = summonerService.get({region: $routeParams.region, name: $routeParams.name}, function(summoner_info) {
+//        var summoner_id = summoner_info.summoner_id;
+//      });
+
+      //console.log(summoner_id);
+
+//      $scope.refreshSoloQueue = function() {
+//        $scope.soloQueue = soloQueueService.get({region: $routeParams.region, id: $scope.summonerInfo.summoner_id});
+//      };
+
+//      console.log($scope.summonerInfo.summoner_id);
+        console.log($scope.summonerInfo);
+//      console.log($scope.teams);
 }]);
 
 lolApp.controller('SummonerLookupCtrl', ['$scope', '$timeout', '$location', '$cookieStore',

@@ -34,6 +34,20 @@ lolApp.factory('matchHistoryService', ['$resource', 'backendUrl', function($reso
   );
 }]);
 
+lolApp.factory('teamService', ['$resource', 'backendUrl', function($resource, backendUrl) {
+  return $resource(backendUrl + '/api/teams/:region/by-member/:name',
+      {region: '@region', name: '@name'},
+      {get: {method: 'GET', isArray: false}}
+  );
+}]);
+
+lolApp.factory('soloQueueService', ['$resource', 'backendUrl', function($resource, backendUrl) {
+  return $resource(backendUrl + '/api/league-entries/:region/:id',
+      {region: '@region', id: '@id'},
+      {get: {method: 'GET', isArray: false}}
+  );
+}]);
+
 //lolApp.factory('summonerUpdateService', ['$http', function($http) {
 //  return $http({
 //    method: 'POST',

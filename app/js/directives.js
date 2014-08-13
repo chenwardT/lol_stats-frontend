@@ -114,3 +114,31 @@ lolApp.directive('gameParticipants', function() {
     }
   };
 });
+
+// Displays solo queue and team ranked basic info (tier, division, name, etc)
+lolApp.directive('summonerLeagueInfo', function() {
+    return {
+        restrict: 'E',
+        templateUrl: 'partials/summoner-league-info.html',
+        replace: true
+    };
+});
+
+lolApp.directive('leagueEntry', function() {
+  return {
+    restrict: 'E',
+    templateUrl: 'partials/league-entry.html',
+    replace: false,
+    controller: function() {
+
+    }
+  }
+});
+
+lolApp.directive('soloQueue', function() {
+  return {
+    restrict: 'E',
+    templateUrl: 'partials/solo-queue.html',
+    replace: false
+  };
+});

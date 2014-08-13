@@ -22,7 +22,7 @@ body {
 }
 
 div {
-  border: 0px cornflowerblue dashed;
+  border: 1px cornflowerblue dashed;
 }
 
 .caption {
