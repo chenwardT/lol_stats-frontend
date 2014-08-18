@@ -22,9 +22,9 @@
       </div>
       <div class="gameStats">
         <div class="kda">
-          <span class="kills">{{game.stats.champions_killed}}</span> /
-          <span class="deaths">{{game.stats.num_deaths}}</span> /
-          <span class="assists">{{game.stats.assists}}</span>
+          <span class="kills">{{game.stats.champions_killed | nullToZero}}</span> /
+          <span class="deaths">{{game.stats.num_deaths | nullToZero}}</span> /
+          <span class="assists">{{game.stats.assists | nullToZero}}</span>
         </div>
         <div class="kdaRatio">
           <span class="kdaRatioText">{{game.stats.champions_killed | kdaRatio:game.stats.num_deaths:game.stats.assists}}</span> KDA
@@ -35,7 +35,7 @@
         <div class="cs"><span class="csValue">{{game.stats.minions_killed + game.stats.neutral_minions_killed}}</span> CS</div>
         <div class="gold"><span class="goldValue">{{game.stats.gold_earned / 1000 | number:0 }}k</span> Gold</div>
         <div class="wards">
-          <span class="sightWards">{{game.stats.sight_wards_bought}}</span>+<span class="visionWards">{{game.stats.vision_wards_bought | nullToZero}}</span> Wards
+          <span class="sightWards">{{game.stats.sight_wards_bought | nullToZero}}</span>+<span class="visionWards">{{game.stats.vision_wards_bought | nullToZero}}</span> Wards
         </div>
       </div>
       <game-items game="game"></game-items>

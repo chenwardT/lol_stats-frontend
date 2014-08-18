@@ -129,6 +129,7 @@ lolApp.directive('leagueEntry', function() {
     restrict: 'E',
     templateUrl: 'partials/league-entry.html',
     replace: false,
+    scope: true,
     controller: function() {
 
     }

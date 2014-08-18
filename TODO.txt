@@ -5,3 +5,11 @@
 
 - Remember to add CSS for directives, especially if things appear wonky after adding them!
   - This is usually the problem if setting `replace` to `true` on a directive "fixes" things.
+
+- Background of summoner basic info box: have vertical slices, arranged horizontally, of champion splash art,
+1 for each of their top X ranked champs, by use frequency.
+
+- Revise game-participants.html to use ng-repeat directive.
+
+- Don't show trinket label on match history if not SR map.
+  - Also don't show label if no trinket?
