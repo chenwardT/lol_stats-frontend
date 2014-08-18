@@ -1,9 +1,19 @@
-<div class="col-md-6">
-    <img src="../img/{{soloQueue.league.tier}}.png" height="87" width="107">
-</div>
-<div class="col-md-6">
-    {{soloQueue.league.tier}} {{soloQueue.division}}<br/>
-    {{soloQueue.league_points}} LP<br/>
-    {{soloQueue.wins}} Wins<br/>
-    {{soloQueue.league.name}}
+<div class="sumRating row">
+    <div class="medal col-md-5 nopadding">
+        <img src="../img/{{soloQueue.league.tier}}_{{soloQueue.division | numeral}}.png" height="100" width="100">
+    </div>
+    <div class="tierRankInfo col-md-7">
+        <div class="tierRankBig">
+            <span class="tierRankTextBig">{{soloQueue.league.tier}} {{soloQueue.division}}</span>
+        </div>
+        <div class="leaguePointsBig">
+            <span class="leaguePointsTextBig">{{soloQueue.league_points}} LP</span>
+        </div>
+        <div class="winLoseBig">
+            <span class="winLoseTextBig">{{soloQueue.wins}} Wins</span>
+        </div>
+        <div class="leagueName">
+            <span class="leagueName">{{soloQueue.league.name}}</span>
+        </div>
+    </div>
 </div>

@@ -119,14 +119,14 @@ lolApp.controller('SummonerDetailCtrl',
       var summoner_id = -1;
 
       $scope.summonerInfo = summonerService.get({region: $routeParams.region, name: $routeParams.name}, function(info) {
-        console.log('info.summoner_id: ' + info.summoner_id)
+//        console.log('info.summoner_id: ' + info.summoner_id)
         summoner_id = info.summoner_id;
-        console.log('summoner_id: ' + summoner_id);
+//        console.log('summoner_id: ' + summoner_id);
 
         // We query soloQueue data in here b/c we need to resolve summonerInfo.summoner_id to make the call.
         // This maybe should be redone to accept $routeParams.name instead.
         $scope.soloQueue = soloQueueService.get({region: $routeParams.region, id: info.summoner_id});
-        console.log($scope.soloQueue);
+//        console.log($scope.soloQueue);
       });
 
       $scope.refreshSummonerInfo = function() {
@@ -168,7 +168,7 @@ lolApp.controller('SummonerDetailCtrl',
 //      };
 
 //      console.log($scope.summonerInfo.summoner_id);
-        console.log($scope.summonerInfo);
+//      console.log($scope.summonerInfo);
 //      console.log($scope.teams);
 }]);
 

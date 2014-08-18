@@ -115,27 +115,6 @@ lolApp.directive('gameParticipants', function() {
   };
 });
 
-// Displays solo queue and team ranked basic info (tier, division, name, etc)
-lolApp.directive('summonerLeagueInfo', function() {
-    return {
-        restrict: 'E',
-        templateUrl: 'partials/summoner-league-info.html',
-        replace: true
-    };
-});
-
-lolApp.directive('leagueEntry', function() {
-  return {
-    restrict: 'E',
-    templateUrl: 'partials/league-entry.html',
-    replace: false,
-    scope: true,
-    controller: function() {
-
-    }
-  }
-});
-
 lolApp.directive('soloQueue', function() {
   return {
     restrict: 'E',
@@ -143,3 +122,49 @@ lolApp.directive('soloQueue', function() {
     replace: false
   };
 });
+
+lolApp.directive('rankedTeams', function() {
+  return {
+    restrict: 'E',
+    templateUrl: 'partials/ranked-teams.html',
+    replace: true,
+    controller: function ($scope) {
+      $scope.teamList = [];
+
+      // This makes sure we only work w/the resolved resource.
+      $scope.teams.$promise.then(function(teams) {
+
+        // Build a list of teams that are not provisional.
+        for ( var i = 0; i < teams.results.length; i++ ) {
+          if (teams.results[i].status == 'RANKED') {
+            $scope.teamList.push(teams.results[i]);
+          }
+        }
+
+        // Remove the team_stat_detail with less wins.
+        // !! This is a temp fix to teams that play both 5s and 3s.
+        for ( var j = 0; j < $scope.teamList.length; j++ ) {
+          var thisTeam = $scope.teamList[j];
+
+          // Technically, we remove the second entry if it's less than or equal.
+          if ( thisTeam.team_stat_detail[0].wins >= thisTeam.team_stat_detail[1].wins ) {
+            thisTeam.team_stat_detail.splice(1,1);
+          } else {
+            thisTeam.team_stat_detail.splice(0,1);
+          }
+        }
+
+
+        console.log($scope.teamList);
+      });
+    }
+  };
+});
+
+//lolApp.directive('teamEntry', function() {
+//  return {
+//    restrict: 'E',
+//    templateUrl: 'partials/team-entry.html',
+//    replace: true
+//  };
+//});

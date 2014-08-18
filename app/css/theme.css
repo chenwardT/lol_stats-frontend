@@ -393,7 +393,7 @@ game-participants {
   vertical-align: middle;
 }
 
-.rankedTeam > div > .medal > img {
+.rankedTeam >  div > div > .medal > img {
   height: 50px;
   width: 50px;
   display: inline;
