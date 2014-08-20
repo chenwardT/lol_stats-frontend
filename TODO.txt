@@ -13,3 +13,6 @@
 
 - Don't show trinket label on match history if not SR map.
   - Also don't show label if no trinket?
+
+- Currently we label a summoner's team as 5s or 3s only, whichever it has stats for.
+  If it has stats for both 5s and 3s, the label that is chosen could be either.

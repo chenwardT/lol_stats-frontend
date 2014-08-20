@@ -374,7 +374,6 @@ game-participants {
 /* Ranked Teams */
 
 .rankedTeam {
-  display: table;
   table-layout: fixed;
   font-family: AppleSDGothicNeo-Regular, Dotum, AppleSDGothic, 'Apple SD Gothic Neo', AppleGothic;
   border-bottom: 1px solid;
@@ -391,6 +390,10 @@ game-participants {
   display: table-cell;
   width: 50px;
   vertical-align: middle;
+}
+
+.tierRankInfo {
+  display: table-cell;
 }
 
 .rankedTeam >  div > div > .medal > img {

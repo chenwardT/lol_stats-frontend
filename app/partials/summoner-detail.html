@@ -10,23 +10,23 @@
     <div us-spinner></div>
   </div>
 
-  <summoner-basic-info></summoner-basic-info>
+  <summoner-basic-info ng-show="summonerInfo.name"></summoner-basic-info>
 
   <div class="container">
     <div class="row">
       <div class="col-md-3">
-          <div class="sumInfoBox">
-              <div class="sumInfoBoxContent">
-                  <solo-queue></solo-queue>
-                  <ranked-teams></ranked-teams>
-              </div>
+        <div class="sumInfoBox">
+          <div class="sumInfoBoxContent">
+            <solo-queue ng-show="soloQueue"></solo-queue>
+            <ranked-teams ng-show="teams"></ranked-teams>
           </div>
-          </div>
-          <!--<solo-queue></solo-queue>-->
-        <!--</div>-->
-        <!--<div>-->
-            <!--<summoner-league-info></summoner-league-info>Team 1<br>Team 2-->
-        <!--</div>-->
+        </div>
+      </div>
+      <!--<solo-queue></solo-queue>-->
+      <!--</div>-->
+      <!--<div>-->
+      <!--<summoner-league-info></summoner-league-info>Team 1<br>Team 2-->
+      <!--</div>-->
       <!--</div>-->
       <div class="col-md-9">
         <div class="matchHistBox">
@@ -37,15 +37,15 @@
   </div> <!-- container -->
 
   <!--<div>-->
-    <!--<ul>-->
-      <!--<li ng-repeat="game in games.results">-->
-        <!--<ul>-->
-          <!--<li ng-repeat="(k, v) in game">-->
-            <!--{{k}}: {{v}}-->
-          <!--</li>-->
-        <!--</ul>-->
-      <!--</li>-->
-    <!--</ul>-->
+  <!--<ul>-->
+  <!--<li ng-repeat="game in games.results">-->
+  <!--<ul>-->
+  <!--<li ng-repeat="(k, v) in game">-->
+  <!--{{k}}: {{v}}-->
+  <!--</li>-->
+  <!--</ul>-->
+  <!--</li>-->
+  <!--</ul>-->
   <!--</div>-->
 
 </div>

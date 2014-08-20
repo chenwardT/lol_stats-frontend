@@ -94,6 +94,11 @@ lolApp.controller('SummonerDetailCtrl',
                 $scope.loading = false;   // Update our model so the view can change.
                 $scope.refreshSummonerInfo();
                 $scope.refreshGames();
+                $scope.refreshTeams();
+
+                if ( summoner_id != -1 ) {
+                  $scope.refreshSoloQueue();
+                }
               }
             });
 
@@ -129,6 +134,10 @@ lolApp.controller('SummonerDetailCtrl',
 //        console.log($scope.soloQueue);
       });
 
+      $scope.refreshSoloQueue = function() {
+        $scope.soloQueue = soloQueueService.get({region: $routeParams.region, id: summoner_id});
+      };
+
       $scope.refreshSummonerInfo = function() {
         $scope.summonerInfo = summonerService.get({region: $routeParams.region, name: $routeParams.name});
       };
@@ -147,6 +156,10 @@ lolApp.controller('SummonerDetailCtrl',
       std_name = std_name.replace(' ', '');
 
       $scope.teams = teamService.get({region: $routeParams.region, name: std_name});
+
+      $scope.refreshTeams = function() {
+        $scope.teams = teamService.get({region: $routeParams.region, name: std_name});
+      };
 
 //      $scope.refreshTeams = function() {
 //        $scope.teams = teamService.get({region: $routeParams.region, name: std_name});

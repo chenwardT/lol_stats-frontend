@@ -134,10 +134,12 @@ lolApp.directive('rankedTeams', function() {
       // This makes sure we only work w/the resolved resource.
       $scope.teams.$promise.then(function(teams) {
 
-        // Build a list of teams that are not provisional.
+        // Build a list of teams that are not provisional and have played at least 1 game this season.
         for ( var i = 0; i < teams.results.length; i++ ) {
           if (teams.results[i].status == 'RANKED') {
-            $scope.teamList.push(teams.results[i]);
+            if (teams.results[i].league_entries.length > 0) {
+              $scope.teamList.push(teams.results[i]);
+            }
           }
         }
 
