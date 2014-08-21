@@ -30,6 +30,57 @@ div {
   border: 0px cornflowerblue dashed;
 }
 
+/* Search Bar */
+.searchBar {
+  margin-bottom: 10px;
+}
+
+/* Summoner Basic Info */
+.summonerInfoHeader {
+  height: 250px;
+  /*background-image: url(../img/summoner_info_header.png);*/
+  background-position: 50% -110%;
+  background-size: auto;
+  background-color: rgb(17, 17, 17);
+  opacity: 0.9;
+}
+
+.summonerInfoText {
+  bottom: 30px;
+  position: absolute;
+  color: white;
+}
+
+.summonerInfoName {
+  font-size: 28px;
+  vertical-align: middle;
+}
+
+.summonerInfoIcon {
+  margin-left: 20px;
+}
+
+.summonerInfoIcon > img {
+  height: 32px;
+  width: 32px;
+}
+
+.summonerInfoRegion {
+  margin-left: 10px;
+  font-size: 12px;
+}
+
+.summonerInfoLevel {
+  font-size: 12px;
+}
+
+/* Main Body Box */
+.mainBody {
+  margin-top: 10px;
+}
+
+/* Match History */
+
 .caption {
   font-family: Arial;
   font-size: .75em;
